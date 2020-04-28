@@ -1,6 +1,6 @@
 <?php
 $rootpassword = 'mysql';
-$dbname = 'testdb';
+$dbname = 'testdb1111';
 $dbuser = 'testuser';
 $dbpassword = '123';
 
@@ -15,7 +15,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // create database
 echo 'Try to create database ...<br>';
-$sql = "DROP DATABASE $dbname";
+$sql = "DROP DATABASE IF EXISTS $dbname";
 $pdo->exec($sql);
 $sql = "CREATE DATABASE $dbname";
 $pdo->exec($sql);
