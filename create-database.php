@@ -1,33 +1,22 @@
 <?php
+// DATA
 $rootpassword = 'mysql';
-$dbname = 'testdb1111';
-$dbuser = 'testuser';
-$dbpassword = '123';
+$databasename = 'testdatabase';
 
-// connect to MySQL as MySQL-Root
+// Root-Connection to MySQL/MariaDB
 $pdo = new PDO(
     "mysql:host=localhost",
     'root',
     $rootpassword
 );
-// show errors
+
+// Show errors
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// create database
-echo 'Try to create database ...<br>';
-$sql = "DROP DATABASE IF EXISTS $dbname";
-$pdo->exec($sql);
-$sql = "CREATE DATABASE $dbname";
+// CREATE DATABASE
+echo 'TRY to create Database ...';
+$sql = "DROP DATABASE IF EXISTS $databasename";
 $pdo->exec($sql);
 
-// create user
-echo 'Try to create user ...<br>';
-$sql = "DROP USER IF EXISTS '$dbuser'@'localhost'";
-$pdo->exec($sql);
-$sql = "CREATE USER '$dbuser'@'localhost' IDENTIFIED BY '$dbpassword'";
-$pdo->exec($sql);
-
-// create permissions for user
-echo 'Try to create permissions ...<br>';
-$sql = "GRANT ALL PRIVILEGES ON $dbname.* TO '$dbuser'@'localhost'";
+$sql = "CREATE DATABASE $databasename";
 $pdo->exec($sql);
