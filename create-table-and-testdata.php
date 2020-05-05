@@ -25,3 +25,12 @@ $sql = "CREATE TABLE schueler (
     nachname CHAR(20) 
 )";
 $pdo->exec($sql);
+
+// CREATE TESTDATA
+echo 'TRY to create testdata ...<br>';
+$sql = "INSERT INTO schueler SET vorname = 'Anna', nachname = 'Arm'";
+$pdo->exec($sql);
+$sql = "INSERT INTO schueler SET vorname = 'Berta', nachname = 'Bein'";
+$pdo->exec($sql);
+$sql = "INSERT INTO schueler SET vorname = 'Carla', nachname = 'Copf'";
+$pdo->exec($sql);
