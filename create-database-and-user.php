@@ -31,7 +31,7 @@ $pdo->exec($sql);
 $sql = "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
 $pdo->exec($sql);
 
-// SET PERMISSIONS USER
+// SET PERMISSIONS FOR USER
 echo 'TRY to set permissions ...<br>';
 $sql = "GRANT ALL PRIVILEGES ON $databasename.* TO '$username'@'localhost'";
 $pdo->exec($sql);
