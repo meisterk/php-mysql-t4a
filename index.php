@@ -9,6 +9,7 @@
 
 <body>
     <h1>Schülerverwaltung</h1>
+    <h2>Liste</h2>
     <table>
         <tr>
             <th>Vorname</th>
@@ -39,6 +40,7 @@
         }
         ?>
     </table>
+    <a href="new.html">Neue Schüler_in erstellen</a>
 </body>
 
 </html>
