@@ -28,7 +28,7 @@ echo 'TRY to create user ...<br>';
 $sql = "DROP USER IF EXISTS '$username'@'localhost'";
 $pdo->exec($sql);
 
-$sql = "CREATE USER '$username'@'localhost' IDENTIFIED BY '$password'";
+$sql = "CREATE USER '$username'@'localhost' IDENTIFIED with mysql_native_password BY '$password'";
 $pdo->exec($sql);
 
 // SET PERMISSIONS FOR USER
