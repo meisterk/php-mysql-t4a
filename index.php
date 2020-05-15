@@ -31,7 +31,7 @@
         // Show errors
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT * FROM schueler";
+        $sql = "SELECT * FROM schueler ORDER BY vorname DESC";
         foreach ($pdo->query($sql) as $zeile) {
             $vorname = $zeile['vorname'];
             $nachname = $zeile['nachname'];
