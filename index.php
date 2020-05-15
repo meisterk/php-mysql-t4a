@@ -9,6 +9,7 @@
 
 <body>
     <h1>Schülerverwaltung</h1>
+    <h2>Liste</h2>
     <table>
         <tr>
             <th>Vorname</th>
@@ -31,7 +32,16 @@
         // Show errors
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT * FROM schueler";
+        // Create new schueler
+        if(isset($_POST['vorname']) && isset($_POST['nachname'])){
+            $vorname = $_POST['vorname'];
+            $nachname = $_POST['nachname'];
+            $sql = "INSERT INTO schueler SET vorname = '$vorname', nachname = '$nachname'";
+            $pdo->exec($sql);
+        }
+
+        // Display data
+        $sql = "SELECT * FROM schueler ORDER BY vorname DESC";
         foreach ($pdo->query($sql) as $zeile) {
             $vorname = $zeile['vorname'];
             $nachname = $zeile['nachname'];
@@ -39,6 +49,7 @@
         }
         ?>
     </table>
+    <a href="new.html">Neue Schüler_in erstellen</a>
 </body>
 
 </html>
