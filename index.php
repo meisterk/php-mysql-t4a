@@ -37,7 +37,8 @@
         if(isset($_POST['vorname']) && isset($_POST['nachname'])){
             $vorname = $_POST['vorname'];
             $nachname = $_POST['nachname'];
-            // SQL-Injection verhindern bei Eingabe: Prepared Statements          
+            // SQL-Injection verhindern bei Eingabe:
+            // Prepared Statements          
             $sql = "INSERT INTO schueler SET vorname = ?, nachname = ?";
             $statement = $pdo->prepare($sql);
             $statement->execute([$vorname, $nachname]);
@@ -48,7 +49,8 @@
         foreach ($pdo->query($sql) as $zeile) {
             // XSS (Cross-Site-Scripting),
             // HTML-Injection, JavaScript-Injection
-            // bei der Ausgabe verhindern
+            // verhindern bei der Ausgabe:
+            // HTML-Sonderzeichen umwandeln mit htmlspecialchars()
             $vorname = htmlspecialchars($zeile['vorname']);
             $nachname = htmlspecialchars($zeile['nachname']);
             echo "<tr><td>$vorname</td><td>$nachname</td></tr>";
