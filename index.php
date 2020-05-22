@@ -36,15 +36,20 @@
         if(isset($_POST['vorname']) && isset($_POST['nachname'])){
             $vorname = $_POST['vorname'];
             $nachname = $_POST['nachname'];
-            $sql = "INSERT INTO schueler SET vorname = '$vorname', nachname = '$nachname'";
-            $pdo->exec($sql);
+            // SQL-Injection verhindern bei Eingabe: Prepared Statements          
+            $sql = "INSERT INTO schueler SET vorname = ?, nachname = ?";
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$vorname, $nachname]);
         }
 
         // Display data
         $sql = "SELECT * FROM schueler ORDER BY vorname DESC";
         foreach ($pdo->query($sql) as $zeile) {
-            $vorname = $zeile['vorname'];
-            $nachname = $zeile['nachname'];
+            // XSS (Cross-Site-Scripting),
+            // HTML-Injection, JavaScript-Injection
+            // bei der Ausgabe verhindern
+            $vorname = htmlspecialchars($zeile['vorname']);
+            $nachname = htmlspecialchars($zeile['nachname']);
             echo "<tr><td>$vorname</td><td>$nachname</td></tr>";
         }
         ?>
