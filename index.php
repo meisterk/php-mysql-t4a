@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schülerverwaltung</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -54,7 +55,7 @@
         }
         ?>
     </table>
-    <a href="new.html">Neue Schüler_in erstellen</a>
+    <a class="button" href="new.html">Neue Schüler_in erstellen</a>
 </body>
 
 </html>
